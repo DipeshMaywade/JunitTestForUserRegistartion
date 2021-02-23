@@ -4,7 +4,6 @@ import org.junit.rules.ExpectedException;
 
 public class MoodAnalyserTest {
 
-
     @Test
     public void givenMessage_whenSad_ShouldReturnSad() {
         MoodAnalyser moodAnalyser = new MoodAnalyser("this is a Sad Message");

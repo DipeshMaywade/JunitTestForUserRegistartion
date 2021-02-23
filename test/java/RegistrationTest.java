@@ -1,39 +1,111 @@
+import org.junit.rules.ExpectedException;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class RegistrationTest{
+
+public class RegistrationTest {
+
     @Test
-    public void firstNameValid_thanTrue() {
-        RegistartionImplement checkname= new RegistartionImplement();
-        boolean output = checkname.firstNameValid("Dipesh");
-        Assert.assertEquals(true, output);
+    public void givenNameAsNullReturnException(){
+        RegistartionImplement checkName = new RegistartionImplement();
+        try {
+            boolean name = checkName.firstNameValid(null);
+            ExpectedException exceptionRule = ExpectedException.none();
+            exceptionRule.expect(UserRegistrationException.class);
+            Assert.assertEquals(true, name);
+        } catch (UserRegistrationException e) {
+            Assert.assertEquals(UserRegistrationException.ExceptionType.NullType, e.type);
+        }
     }
 
     @Test
-    public void secondNameValid_thanTrue() {
-        RegistartionImplement checkname= new RegistartionImplement();
-        boolean output = checkname.firstNameValid("Maywade");
-        Assert.assertEquals(true, output);
+    public void givenNameAsEmptyReturnException() {
+        RegistartionImplement checkName = new RegistartionImplement();
+        try {
+            boolean name = checkName.firstNameValid("");
+            ExpectedException exceptionRule = ExpectedException.none();
+            exceptionRule.expect(UserRegistrationException.class);
+            Assert.assertEquals(true, name);
+        } catch (UserRegistrationException e) {
+            Assert.assertEquals(UserRegistrationException.ExceptionType.EmptyType, e.type);
+        }
     }
 
     @Test
-    public void emailValid_thanTrue() {
-        RegistartionImplement checkEmail= new RegistartionImplement();
-        boolean output = checkEmail.emailValid("abcDipesh@bl.co.in");
-        Assert.assertEquals(true, output);
+    public void givenEmailAsNullReturnException(){
+        RegistartionImplement checkEmail = new RegistartionImplement();
+        try {
+            boolean email = checkEmail.emailValid(null);
+            ExpectedException exceptionRule = ExpectedException.none();
+            exceptionRule.expect(UserRegistrationException.class);
+            Assert.assertEquals(true, email);
+        } catch (UserRegistrationException e) {
+            Assert.assertEquals(UserRegistrationException.ExceptionType.NullType, e.type);
+        }
     }
 
     @Test
-    public void phoneValid_thanTrue() {
-        RegistartionImplement checkPhone= new RegistartionImplement();
-        boolean output = checkPhone.phoneValid("91 8269602271");
-        Assert.assertEquals(true, output);
+    public void givenEmailAsEmptyReturnException(){
+        try {
+            RegistartionImplement checkEmail = new RegistartionImplement();
+            boolean email = checkEmail.emailValid("");
+            ExpectedException exceptionRule = ExpectedException.none();
+            exceptionRule.expect(UserRegistrationException.class);
+            Assert.assertEquals(true, email);
+        } catch (UserRegistrationException e) {
+            Assert.assertEquals(UserRegistrationException.ExceptionType.EmptyType, e.type);
+        }
     }
 
     @Test
-    public void passwordValid_thanTrue() {
-        RegistartionImplement checkPassword= new RegistartionImplement();
-        boolean output = checkPassword.passwordValid("@123Dipesh");
-        Assert.assertEquals(true, output);
+    public void givenNumberAsNullReturnException(){
+        RegistartionImplement checkPhone = new RegistartionImplement();
+        try {
+            boolean phone = checkPhone.phoneValid(null);
+            ExpectedException exceptionRule = ExpectedException.none();
+            exceptionRule.expect(UserRegistrationException.class);
+            Assert.assertEquals(true, phone);
+        } catch (UserRegistrationException e) {
+            Assert.assertEquals(UserRegistrationException.ExceptionType.NullType, e.type);
+        }
+    }
+
+    @Test
+    public void givenNumberEmpty_shouldThrowException(){
+        RegistartionImplement checkPhone = new RegistartionImplement();
+        try {
+            boolean phone = checkPhone.phoneValid("");
+            ExpectedException exceptionRule = ExpectedException.none();
+            exceptionRule.expect(UserRegistrationException.class);
+            Assert.assertEquals(true, phone);
+        } catch (UserRegistrationException e) {
+            Assert.assertEquals(UserRegistrationException.ExceptionType.EmptyType, e.type);
+        }
+    }
+
+    @Test
+    public void givenPasswordAsNullReturnException(){
+        RegistartionImplement checkPassword = new RegistartionImplement();
+        try {
+            boolean password = checkPassword.passwordValid(null);
+            ExpectedException exceptionRule = ExpectedException.none();
+            exceptionRule.expect(UserRegistrationException.class);
+            Assert.assertEquals(true, password);
+        } catch (UserRegistrationException e) {
+            Assert.assertEquals(UserRegistrationException.ExceptionType.NullType, e.type);
+        }
+    }
+
+    @Test
+    public void givenPasswordEmpty_shouldThrowException(){
+        RegistartionImplement checkPassword = new RegistartionImplement();
+        try {
+            boolean password = checkPassword.passwordValid("");
+            ExpectedException exceptionRule = ExpectedException.none();
+            exceptionRule.expect(UserRegistrationException.class);
+            Assert.assertEquals(true, password);
+        } catch (UserRegistrationException e) {
+            Assert.assertEquals(UserRegistrationException.ExceptionType.EmptyType, e.type);
+        }
     }
 }

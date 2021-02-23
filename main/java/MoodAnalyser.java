@@ -6,15 +6,19 @@ public class MoodAnalyser {
         this.message = message;
     }
 
-    public String analyseMood() {
+
+    public String analyseMood() throws MoodAnalyserException {
         try {
+            if (message.isEmpty()) {
+                throw new MoodAnalyserException("Entered value is empty", MoodAnalyserException.ExceptionType.EmptyType);
+            }
             if (message.contains("Sad")) {
                 return "SAD";
-            } else {
+            } else{
                 return "HAPPY";
             }
-        }catch (NullPointerException e){
-            return "HAPPY";
+        } catch (NullPointerException e) {
+            throw new MoodAnalyserException("enter value is null", MoodAnalyserException.ExceptionType.NullType);
         }
     }
 }
